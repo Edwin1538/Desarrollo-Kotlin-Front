@@ -1,23 +1,13 @@
 package com.example.appinterface
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.squareup.picasso.Picasso
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.widget.*
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.appinterface.Adapter.PersonaAdapter
-import com.example.appinterface.Api.DataResponse
-import com.example.appinterface.Api.RetrofitInstance
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,9 +23,9 @@ class MainActivity : AppCompatActivity() {
             insets
 
         }
-        val buttonRoles: Button = findViewById(R.id.buttonRoles)
-        buttonRoles.setOnClickListener {
-            val intent = Intent(this, RolesActivity::class.java)
+        val buttonDocentes: Button = findViewById(R.id.buttonDocentes)
+        buttonDocentes.setOnClickListener {
+            val intent = Intent(this, DocentesActivity::class.java)
             startActivity(intent)
         }
 

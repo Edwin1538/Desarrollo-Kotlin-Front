@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/main" android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:context=".RolesActivity">
+        android:layout_height="match_parent" tools:context=".DocentesActivity">
 
     <Button
             android:text="volver"
@@ -23,16 +23,16 @@
             android:padding="16dp">
 
         <Button
-                android:text="Mostrar Roles"
+                android:text="Mostrar Acudientes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/MostrarRoles"
-                android:onClick="mostrarRoles"
+                android:id="@+id/MostrarDocentes"
+                android:onClick="mostrarDocentes"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.171"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.566"/>
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listRoles"
+                android:id="@+id/listDocentes"
                 android:layout_width="159dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
