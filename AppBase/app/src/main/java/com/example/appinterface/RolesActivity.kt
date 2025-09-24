@@ -13,23 +13,22 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class
-AcudientesActivity : AppCompatActivity() {
+RolesActivity : AppCompatActivity() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_acudientes)
+            setContentView(R.layout.activity_roles)
         }
 
     fun volverpag(v: View) {
         onBackPressed()
     }
 
-    fun mostraracudientes(v: View) {
-
-        val recyclerView = findViewById<RecyclerView>(R.id.listAcudientes)
+    fun mostrarRoles(v: View) {
+        val recyclerView = findViewById<RecyclerView>(R.id.listRoles)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        RetrofitInstance.apiAcudientes.getAcudientes().enqueue(object : Callback<List<String>> {
+        RetrofitInstance.apiRoles.getRoles().enqueue(object : Callback<List<String>> {
             override fun onResponse(call: Call<List<String>>, response: Response<List<String>>) {
                 if (response.isSuccessful) {
                     val data = response.body()
@@ -37,15 +36,15 @@ AcudientesActivity : AppCompatActivity() {
                         val adapter = PersonaAdapter(data)
                         recyclerView.adapter = adapter
                     } else {
-                        Toast.makeText(this@AcudientesActivity, "No hay personas disponibles", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@RolesActivity, "No hay personas disponibles", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(this@AcudientesActivity, "Error en la respuesta de la API", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RolesActivity, "Error en la respuesta de la API", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<List<String>>, t: Throwable) {
-                Toast.makeText(this@AcudientesActivity, "Error en la conexión con la API", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@RolesActivity, "Error en la conexión con la API", Toast.LENGTH_SHORT).show()
             }
         })
     }

@@ -21,15 +21,12 @@
 			</intent-filter>
 		</activity>
 
-		<activity
-				android:name=".DocentesActivity"
-				android:exported="false" />
-
-		<activity
-				android:name=".AcudientesActivity"
-				android:exported="false" />
-
-
+		<activity android:name=".RolesActivity"
+				  android:exported="true">
+		</activity>
+		<activity android:name=".AcudientesActivity"
+				  android:exported="true">
+		</activity>
 	</application>
 
 </manifest>
