@@ -3,41 +3,77 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main" android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:context=".AcudientesActivity">
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AcudientesActivity">
+
+    <!-- Botones de operaciones -->
+    <Button
+            android:id="@+id/MostrarAcudientes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mostrar"
+            android:onClick="mostraracudientes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CrearAcudiente"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_marginTop="16dp" />
 
     <Button
-            android:text="volver"
+            android:id="@+id/CrearAcudiente"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonvolver"
-            android:onClick="volverpag"
+            android:layout_height="wrap_content"
+            android:text="Crear"
+            android:onClick="crearAcudiente"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.884"
-            app:layout_constraintVertical_bias="0.941"/>
-    <LinearLayout
-            android:id="@+id/layoutMostrarDatos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
+            app:layout_constraintStart_toEndOf="@+id/MostrarAcudientes"
+            app:layout_constraintEnd_toStartOf="@+id/EditarAcudiente"
+            android:layout_marginTop="16dp" />
 
-        <Button
-                android:text="Mostrar Acudientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/MostrarAcudientes"
-                android:onClick="mostraracudientes"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.171"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.566"/>
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listAcudientes"
-                android:layout_width="159dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15" app:layout_constraintVertical_bias="0.8"/>
-    </LinearLayout>
+    <Button
+            android:id="@+id/EditarAcudiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:onClick="editarAcudiente"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/CrearAcudiente"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+    <Button
+            android:id="@+id/EliminarAcudiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:onClick="eliminarAcudiente"
+            app:layout_constraintTop_toBottomOf="@+id/MostrarAcudientes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <!-- Lista de acudientes -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listAcudientes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EliminarAcudiente"
+            app:layout_constraintBottom_toTopOf="@+id/buttonvolver" />
+
+    <!-- Botón volver -->
+    <Button
+            android:id="@+id/buttonvolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:onClick="volverpag"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

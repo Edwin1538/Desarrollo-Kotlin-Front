@@ -3,41 +3,77 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/main" android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:context=".DocentesActivity">
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DocentesActivity">
+
+    <!-- Botones de operaciones -->
+    <Button
+            android:id="@+id/MostrarDocentes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mostrar"
+            android:onClick="mostrardocentes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/CrearDocente"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_marginTop="16dp" />
 
     <Button
-            android:text="volver"
+            android:id="@+id/CrearDocente"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/buttonvolver"
-            android:onClick="volverpag"
+            android:layout_height="wrap_content"
+            android:text="Crear"
+            android:onClick="crearDocente"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.884"
-            app:layout_constraintVertical_bias="0.941"/>
-    <LinearLayout
-            android:id="@+id/layoutMostrarDatos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp">
+            app:layout_constraintStart_toEndOf="@+id/MostrarDocentes"
+            app:layout_constraintEnd_toStartOf="@+id/EditarDocente"
+            android:layout_marginTop="16dp" />
 
-        <Button
-                android:text="Mostrar Acudientes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/MostrarDocentes"
-                android:onClick="mostrarDocentes"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.171"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.566"/>
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listDocentes"
-                android:layout_width="159dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15" app:layout_constraintVertical_bias="0.8"/>
-    </LinearLayout>
+    <Button
+            android:id="@+id/EditarDocente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:onClick="editarDocente"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/CrearDocente"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+    <Button
+            android:id="@+id/EliminarDocente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar"
+            android:onClick="eliminarDocente"
+            app:layout_constraintTop_toBottomOf="@+id/MostrarDocentes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" />
+
+    <!-- Lista de docentes -->
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listDocentes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/EliminarDocente"
+            app:layout_constraintBottom_toTopOf="@+id/buttonvolver" />
+
+    <!-- Botón volver -->
+    <Button
+            android:id="@+id/buttonvolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:onClick="volverpag"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
