@@ -8,72 +8,118 @@
         android:layout_height="match_parent"
         tools:context=".AcudientesActivity">
 
-    <!-- Botones de operaciones -->
-    <Button
-            android:id="@+id/MostrarAcudientes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mostrar"
-            android:onClick="mostraracudientes"
+    <!-- Toolbar con título -->
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            android:elevation="4dp"
+            app:title="Gestión de Acudientes"
+            app:titleTextColor="@android:color/black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/CrearAcudiente"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            android:layout_marginTop="16dp" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <!-- Botones con estilo FAB agrupados -->
+
+    <!-- Chips horizontales para acciones -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/CrearAcudiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Crear"
+            android:layout_margin="16dp"
+            android:src="@android:drawable/ic_input_add"
             android:onClick="crearAcudiente"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/MostrarAcudientes"
-            app:layout_constraintEnd_toStartOf="@+id/EditarAcudiente"
-            android:layout_marginTop="16dp" />
-
-    <Button
-            android:id="@+id/EditarAcudiente"
-            android:layout_width="wrap_content"
+            app:backgroundTint="#1DA1F2"
+            app:tint="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp" android:layout_marginEnd="28dp"/>
+    <HorizontalScrollView
+            android:id="@+id/chipsContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Editar"
-            android:onClick="editarAcudiente"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/CrearAcudiente"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
-
-    <Button
-            android:id="@+id/EliminarAcudiente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Eliminar"
-            android:onClick="eliminarAcudiente"
-            app:layout_constraintTop_toBottomOf="@+id/MostrarAcudientes"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="80dp"
+            android:scrollbars="none"
+            android:paddingEnd="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" />
+            app:layout_constraintEnd_toStartOf="@+id/CrearAcudiente">
 
-    <!-- Lista de acudientes -->
+        <com.google.android.material.chip.ChipGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:singleSelection="false"
+                app:chipSpacing="8dp">
+
+            <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMostrar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mostrar"
+                    android:onClick="mostraracudientes"
+                    app:chipBackgroundColor="#E3F2FD"
+                    app:chipStrokeColor="#1976D2"
+                    app:chipStrokeWidth="1dp"
+                    android:textColor="#1976D2" />
+
+            <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEditar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar"
+                    android:onClick="editarAcudiente"
+                    app:chipBackgroundColor="#FFF3E0"
+                    app:chipStrokeColor="#F57C00"
+                    app:chipStrokeWidth="1dp"
+                    android:textColor="#F57C00" />
+
+            <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEliminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar"
+                    android:onClick="eliminarAcudiente"
+                    app:chipBackgroundColor="#FFEBEE"
+                    app:chipStrokeColor="#D32F2F"
+                    app:chipStrokeWidth="1dp"
+                    android:textColor="#D32F2F" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Lista de docentes con estilo moderno -->
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listAcudientes"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="80dp"
+            android:scrollbars="none"
+            android:overScrollMode="never"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EliminarAcudiente"
-            app:layout_constraintBottom_toTopOf="@+id/buttonvolver" />
+            app:layout_constraintTop_toBottomOf="@+id/chipsContainer"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Botón volver -->
-    <Button
+    <!-- Botón volver flotante -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/buttonvolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="Volver"
             android:onClick="volverpag"
+            app:icon="@android:drawable/ic_menu_revert"
+            app:backgroundTint="#6C757D"
+            app:iconTint="@android:color/white"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="16dp" />
+            app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
