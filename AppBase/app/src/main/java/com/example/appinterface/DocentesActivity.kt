@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Modelos.Docente
@@ -14,6 +15,7 @@ import com.example.appinterface.Api.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 // Adaptador mejorado que funciona con tu estructura actual
 class DocenteModernoAdapter(
@@ -39,6 +41,7 @@ class DocenteModernoAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocenteViewHolder {
+
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_docente, parent, false)
         return DocenteViewHolder(view)
@@ -76,6 +79,7 @@ class DocentesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_docentes)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.mi_statusbar_color)
 
         setupRecyclerView()
     }

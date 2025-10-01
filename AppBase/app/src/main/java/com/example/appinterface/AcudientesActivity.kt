@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appinterface.Modelos.Acudiente
@@ -21,7 +22,6 @@ class AcudienteModernoAdapter(
     private val onMenuClick: (AcudienteDisplay, View) -> Unit
 ) : RecyclerView.Adapter<AcudienteModernoAdapter.AcudienteViewHolder>() {
 
-    // Clase para mostrar datos en la UI
     data class AcudienteDisplay(
         val id: String,
         val nombre: String,
@@ -71,6 +71,7 @@ class AcudientesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_acudientes)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.mi_statusbar_color)
 
         setupRecyclerView()
     }
@@ -180,21 +181,15 @@ class AcudientesActivity : AppCompatActivity() {
                         acudientesList.clear()
                         acudientesList.addAll(data)
 
-                        // Convertir List<String> a AcudienteDisplay para el adaptador moderno
                         val acudientesDisplay = data.mapIndexed { index, acudienteString ->
-                            // Parseamos el string del acudiente
-                            // Ajusta este parsing según el formato que devuelve tu API
-                            // Ejemplo: "1: Juan Pérez - juan@email.com"
                             val partes = acudienteString.split(":", limit = 2)
                             val id = if (partes.size > 1) partes[0].trim() else index.toString()
                             val resto = if (partes.size > 1) partes[1].trim() else acudienteString
 
-                            // Si tu formato incluye más información, ajusta aquí
                             val partesNombre = resto.split("-")
                             val nombreCompleto = if (partesNombre.isNotEmpty()) partesNombre[0].trim() else resto
                             val correo = if (partesNombre.size > 1) partesNombre[1].trim() else ""
 
-                            // Separar nombre y apellido si vienen juntos
                             val partesNombreApellido = nombreCompleto.split(" ", limit = 2)
                             val nombre = if (partesNombreApellido.isNotEmpty()) partesNombreApellido[0] else nombreCompleto
                             val apellido = if (partesNombreApellido.size > 1) partesNombreApellido[1] else ""

@@ -6,7 +6,9 @@
 		android:id="@+id/main"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:background="#EDF1F2"
 		tools:context=".MainActivity">
+
 
 	<TextView
 			android:id="@+id/textView2"
@@ -15,11 +17,13 @@
 			android:text="Bienvenido a SIGA MOVIL"
 			android:textSize="24sp"
 			android:textStyle="bold"
+			android:textColor="#020B30"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintHorizontal_bias="0.5"
+			android:background="#EDF1F2"
 			app:layout_constraintVertical_bias="0.1"/>
 
 	<ImageView
@@ -32,29 +36,42 @@
 			app:layout_constraintTop_toBottomOf="@+id/textView2"
 			app:layout_constraintBottom_toTopOf="@+id/buttonDocentes"
 			app:layout_constraintVertical_bias="0.0" app:layout_constraintHorizontal_bias="0.497"/>
+
 	<Button
 			android:id="@+id/buttonDocentes"
 			android:text="Docentes"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="134dp"
+			android:layout_height="59dp"
 			android:onClick="irDocentes"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/buttonAcudientes"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintHorizontal_chainStyle="spread"
-			app:layout_constraintVertical_bias="0.7"/>
-
+			app:layout_constraintVertical_bias="0.699"/>
 	<Button
 			android:id="@+id/buttonAcudientes"
 			android:text="Acudientes"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="153dp"
+			android:layout_height="61dp"
 			android:onClick="irAcudientes"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
 			app:layout_constraintStart_toEndOf="@+id/buttonDocentes"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintVertical_bias="0.7"/>
+	<Button
+			android:text="MENU PRINCIPAL"
+			android:layout_width="166dp"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
+			android:layout_height="65dp" android:id="@+id/button"
+			app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.457"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.593"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
