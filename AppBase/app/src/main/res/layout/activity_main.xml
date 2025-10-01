@@ -40,8 +40,8 @@
 	<Button
 			android:id="@+id/buttonDocentes"
 			android:text="Docentes"
-			android:layout_width="134dp"
-			android:layout_height="59dp"
+			android:layout_width="153dp"
+			android:layout_height="61dp"
 			android:onClick="irDocentes"
 			android:backgroundTint="#020B30"
 			android:textColor="#FFFFFF"
@@ -73,5 +73,42 @@
 			app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.457"
 			app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.593"/>
+	<Button
+			android:text="Button"
+			android:layout_width="153dp"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
+			android:layout_height="61dp" android:id="@+id/button2"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.135"
+			app:layout_constraintVertical_bias="0.814"/>
+	<Button
+			android:text="Button"
+			android:layout_width="153dp"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
+			android:layout_height="61dp" android:id="@+id/button3"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintHorizontal_bias="0.864" app:layout_constraintVertical_bias="0.814"/>
+	<Button
+			android:text="Button"
+			android:layout_width="153dp"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
+			android:layout_height="61dp" android:id="@+id/button4"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintHorizontal_bias="0.135" app:layout_constraintVertical_bias="0.925"/>
+	<Button
+			android:text="Button"
+			android:layout_width="153dp"
+			android:backgroundTint="#020B30"
+			android:textColor="#FFFFFF"
+			android:layout_height="61dp" android:id="@+id/button5"
+			app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintHorizontal_bias="0.864" app:layout_constraintVertical_bias="0.925"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
