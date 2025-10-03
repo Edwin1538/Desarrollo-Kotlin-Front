@@ -43,6 +43,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     implementation("androidx.recyclerview:recyclerview:1.3.0")      // ← Agregada
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
 
     // Tus dependencias de red
     implementation("com.squareup.picasso:picasso:2.71828")
