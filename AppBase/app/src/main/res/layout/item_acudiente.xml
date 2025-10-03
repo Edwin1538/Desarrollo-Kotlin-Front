@@ -23,17 +23,20 @@
                 android:id="@+id/avatarDocente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@drawable/circle_background"
-                android:src="@android:drawable/ic_menu_gallery"
+                android:src="@drawable/acudiente"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Nombre del docente -->
+
+        <!-- Materia o departamento -->
+
+        <!-- Email -->
         <TextView
                 android:id="@+id/nombreAcudiente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="28dp"
+                android:layout_height="27dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="8dp"
                 android:textSize="16sp"
@@ -42,13 +45,12 @@
                 tools:text="Dr. Juan Pérez"
                 app:layout_constraintStart_toEndOf="@+id/avatarDocente"
                 app:layout_constraintEnd_toStartOf="@+id/menuOptions"
-                app:layout_constraintTop_toTopOf="@+id/avatarDocente" />
-
-        <!-- Materia o departamento -->
+                app:layout_constraintTop_toTopOf="@+id/avatarDocente" android:layout_marginTop="4dp"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <TextView
                 android:id="@+id/apellidoAcudiente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="210dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="8dp"
@@ -57,9 +59,7 @@
                 tools:text="Matemáticas • Facultad de Ciencias"
                 app:layout_constraintStart_toEndOf="@+id/avatarDocente"
                 app:layout_constraintEnd_toStartOf="@+id/menuOptions"
-                app:layout_constraintTop_toBottomOf="@+id/nombreDocente" />
-
-        <!-- Email -->
+                app:layout_constraintTop_toBottomOf="@+id/nombreDocente" app:layout_constraintHorizontal_bias="1.0"/>
         <TextView
                 android:id="@+id/emailAcudiente"
                 android:layout_width="0dp"
