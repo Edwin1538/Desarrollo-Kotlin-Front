@@ -93,6 +93,8 @@
 
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
+
+    <!-- Botón volver flotante -->
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listDocentes"
             android:layout_width="0dp"
@@ -106,9 +108,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chipsContainer"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    <!-- Botón volver flotante -->
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0"/>
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/buttonvolver"
             android:layout_width="wrap_content"

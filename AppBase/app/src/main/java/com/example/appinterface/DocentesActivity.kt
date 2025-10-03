@@ -15,16 +15,18 @@ import com.example.appinterface.Api.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.text.SpannableString
+import android.text.style.StyleSpan
+import android.graphics.Typeface
+import android.text.SpannableStringBuilder
 
 
-// Adaptador mejorado que funciona con tu estructura actual
 class DocenteModernoAdapter(
     private var docentes: MutableList<DocenteDisplay>,
     private val onDocenteClick: (DocenteDisplay) -> Unit,
     private val onMenuClick: (DocenteDisplay, View) -> Unit
 ) : RecyclerView.Adapter<DocenteModernoAdapter.DocenteViewHolder>() {
 
-    // Clase para mostrar datos en la UI
     data class DocenteDisplay(
         val id: String,
         val nombre: String,
@@ -34,8 +36,6 @@ class DocenteModernoAdapter(
 
     class DocenteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nombreDocente: TextView = itemView.findViewById(R.id.nombreDocente)
-        val materiaDocente: TextView = itemView.findViewById(R.id.materiaDocente)
-        val emailDocente: TextView = itemView.findViewById(R.id.emailDocente)
         val menuOptions: ImageButton = itemView.findViewById(R.id.menuOptions)
         val statusIndicator: View = itemView.findViewById(R.id.statusIndicator)
     }
@@ -50,13 +50,24 @@ class DocenteModernoAdapter(
     override fun onBindViewHolder(holder: DocenteViewHolder, position: Int) {
         val docente = docentes[position]
 
-        holder.nombreDocente.text = docente.nombre
+        val builder = SpannableStringBuilder()
 
+        val textoId = "ID: ${docente.id}"
+        val spannableId = SpannableString(textoId)
+        spannableId.setSpan(StyleSpan(Typeface.BOLD), 0, 3, 0)
+        builder.append(spannableId).append("\n")
 
-        // Configurar indicador de estado
+        val textoUsuarioId = "ID de Usuario: ${docente.email}"
+        val spannableUsuarioId = SpannableString(textoUsuarioId)
+        spannableUsuarioId.setSpan(StyleSpan(Typeface.BOLD), 0, 11, 0)
+        builder.append(spannableUsuarioId).append("\n")
 
+        val textoNombre = "Nombre: ${docente.nombre}"
+        val spannableNombre = SpannableString(textoNombre)
+        spannableNombre.setSpan(StyleSpan(Typeface.BOLD), 0, 7, 0)
+        builder.append(spannableNombre)
 
-
+        holder.nombreDocente.text = builder
         holder.itemView.setOnClickListener { onDocenteClick(docente) }
         holder.menuOptions.setOnClickListener { onMenuClick(docente, it) }
     }
@@ -136,16 +147,27 @@ class DocentesActivity : AppCompatActivity() {
                         docentesList.clear()
                         docentesList.addAll(data)
 
-                        // Convertir List<String> a DocenteDisplay para el adaptador moderno
                         val docentesDisplay = data.mapIndexed { index, docenteString ->
-                            // Parseamos el string del docente (asumiendo formato "ID: Nombre Apellido")
-                            val partes = docenteString.split(":", limit = 2)
-                            val id = if (partes.size > 1) partes[0].trim() else index.toString()
-                            val nombreCompleto = if (partes.size > 1) partes[1].trim() else docenteString
+                            // Parsear: "id: 1 - Usuario ID: 1 - Nombre: NoJuan Perez"
+                            val partes = docenteString.split(" - ")
+
+                            val id = if (partes.isNotEmpty()) {
+                                partes[0].replace("id:", "").trim()
+                            } else index.toString()
+
+                            val usuarioId = if (partes.size > 1) {
+                                partes[1].replace("Usuario ID:", "").trim()
+                            } else ""
+
+                            val nombre = if (partes.size > 2) {
+                                partes[2].replace("Nombre:", "").trim()
+                            } else ""
 
                             DocenteModernoAdapter.DocenteDisplay(
                                 id = id,
-                                nombre = nombreCompleto,)
+                                nombre = nombre,
+                                email = usuarioId
+                            )
                         }
 
                         docenteAdapter.updateDocentes(docentesDisplay)

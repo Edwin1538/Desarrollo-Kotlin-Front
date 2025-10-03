@@ -18,64 +18,31 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-        <!-- Avatar circular -->
         <ImageView
                 android:id="@+id/avatarDocente"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/circle_background"
-                android:src="@android:drawable/ic_menu_gallery"
+                android:src="@drawable/base"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Nombre del docente -->
         <TextView
-                android:id="@+id/nombreAcudiente"
+                android:id="@+id/infoAcudiente"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginEnd="8dp"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                tools:text="Dr. Juan Pérez"
-                app:layout_constraintStart_toEndOf="@+id/avatarDocente"
-                app:layout_constraintEnd_toStartOf="@+id/menuOptions"
-                app:layout_constraintTop_toTopOf="@+id/avatarDocente" />
-
-        <!-- Materia o departamento -->
-        <TextView
-                android:id="@+id/apellidoAcudiente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="2dp"
                 android:layout_marginEnd="8dp"
                 android:textSize="14sp"
-                android:textColor="#657786"
-                tools:text="Matemáticas • Facultad de Ciencias"
+                android:textColor="@android:color/black"
+                tools:text="Nombre: Juan\nApellido: Pérez\nCorreo: juan@mail.com"
                 app:layout_constraintStart_toEndOf="@+id/avatarDocente"
                 app:layout_constraintEnd_toStartOf="@+id/menuOptions"
-                app:layout_constraintTop_toBottomOf="@+id/nombreDocente" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Email -->
-        <TextView
-                android:id="@+id/emailAcudiente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
-                android:textSize="12sp"
-                android:textColor="#AAB8C2"
-                tools:text="juan.perez@universidad.edu"
-                app:layout_constraintStart_toEndOf="@+id/avatarDocente"
-                app:layout_constraintEnd_toStartOf="@+id/menuOptions"
-                app:layout_constraintTop_toBottomOf="@+id/materiaDocente"
-                app:layout_constraintBottom_toBottomOf="@+id/avatarDocente" />
-
-        <!-- Menú de opciones -->
         <ImageButton
                 android:id="@+id/menuOptions"
                 android:layout_width="24dp"
@@ -86,7 +53,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Indicador de estado (opcional) -->
         <View
                 android:id="@+id/statusIndicator"
                 android:layout_width="8dp"

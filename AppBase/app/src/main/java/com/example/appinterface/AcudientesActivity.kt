@@ -15,6 +15,10 @@ import com.example.appinterface.Api.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import android.graphics.Typeface
 
 class AcudienteModernoAdapter(
     private var acudientes: MutableList<AcudienteDisplay>,
@@ -30,9 +34,7 @@ class AcudienteModernoAdapter(
     )
 
     class AcudienteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nombreAcudiente: TextView = itemView.findViewById(R.id.nombreAcudiente)
-        val apellidoAcudiente: TextView = itemView.findViewById(R.id.apellidoAcudiente)
-        val correoAcudiente: TextView = itemView.findViewById(R.id.emailAcudiente)
+        val infoAcudiente: TextView = itemView.findViewById(R.id.infoAcudiente)
         val menuOptions: ImageButton = itemView.findViewById(R.id.menuOptions)
     }
 
@@ -45,10 +47,24 @@ class AcudienteModernoAdapter(
     override fun onBindViewHolder(holder: AcudienteViewHolder, position: Int) {
         val acudiente = acudientes[position]
 
-        holder.nombreAcudiente.text = acudiente.nombre
-        holder.apellidoAcudiente.text = acudiente.apellido
-        holder.correoAcudiente.text = acudiente.correo
+        val builder = SpannableStringBuilder()
 
+        val textoId = "ID: ${acudiente.id}"
+        val spannableId = SpannableString(textoId)
+        spannableId.setSpan(StyleSpan(Typeface.BOLD), 0, 3, 0)
+        builder.append(spannableId).append("\n")
+
+        val textoNombre = "Nombre : ${acudiente.nombre}"
+        val spannableNombre = SpannableString(textoNombre)
+        spannableNombre.setSpan(StyleSpan(Typeface.BOLD), 0, 16, 0)  // "Nombre Completo:" = 16 caracteres
+        builder.append(spannableNombre).append("\n")
+
+        val textoEmail = "Email: ${acudiente.correo}"
+        val spannableEmail = SpannableString(textoEmail)
+        spannableEmail.setSpan(StyleSpan(Typeface.BOLD), 0, 6, 0)
+        builder.append(spannableEmail)
+
+        holder.infoAcudiente.text = builder
         holder.itemView.setOnClickListener { onAcudienteClick(acudiente) }
         holder.menuOptions.setOnClickListener { onMenuClick(acudiente, it) }
     }
@@ -182,23 +198,28 @@ class AcudientesActivity : AppCompatActivity() {
                         acudientesList.addAll(data)
 
                         val acudientesDisplay = data.mapIndexed { index, acudienteString ->
-                            val partes = acudienteString.split(":", limit = 2)
-                            val id = if (partes.size > 1) partes[0].trim() else index.toString()
-                            val resto = if (partes.size > 1) partes[1].trim() else acudienteString
+                            val partes = acudienteString.split(" - ")
 
-                            val partesNombre = resto.split("-")
-                            val nombreCompleto = if (partesNombre.isNotEmpty()) partesNombre[0].trim() else resto
-                            val correo = if (partesNombre.size > 1) partesNombre[1].trim() else ""
+                            val primeraParte = if (partes.isNotEmpty()) partes[0] else acudienteString
+                            val subpartes = primeraParte.split(" name: ")
 
-                            val partesNombreApellido = nombreCompleto.split(" ", limit = 2)
-                            val nombre = if (partesNombreApellido.isNotEmpty()) partesNombreApellido[0] else nombreCompleto
-                            val apellido = if (partesNombreApellido.size > 1) partesNombreApellido[1] else ""
+                            val id = if (subpartes.isNotEmpty()) {
+                                subpartes[0].replace("id:", "").trim()
+                            } else index.toString()
+
+                            val nombreCompleto = if (subpartes.size > 1) {
+                                subpartes[1].trim()
+                            } else ""
+
+                            val email = if (partes.size > 1) {
+                                partes[1].replace("Email:", "").trim()
+                            } else ""
 
                             AcudienteModernoAdapter.AcudienteDisplay(
                                 id = id,
-                                nombre = nombre,
-                                apellido = apellido,
-                                correo = correo
+                                nombre = nombreCompleto,
+                                apellido = "",
+                                correo = email
                             )
                         }
 
